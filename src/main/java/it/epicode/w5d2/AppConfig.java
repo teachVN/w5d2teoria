@@ -1,14 +1,20 @@
 package it.epicode.w5d2;
 
 import it.epicode.w5d2.bean.Auto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.List;
+
 @Configuration
 @PropertySource("application.properties")
 public class AppConfig {
+
+
 
     @Bean("smart")
     public Auto smart(){
@@ -27,4 +33,10 @@ public class AppConfig {
         auto.setNumeroPorte(5);
         return auto;
     }
+    @Bean("lista_auto")
+    public List<Auto> auto(){
+        return List.of(smart(), scenic("Scenic", "Renault"));
+    }
+
+
 }
